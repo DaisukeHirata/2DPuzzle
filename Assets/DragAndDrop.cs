@@ -26,13 +26,14 @@ public class DragAndDrop : MonoBehaviour {
     }
 
     public void checkMatch() {
-		GameObject ph1 = GameObject.Find("PlaceHolder1");
-		GameObject img = GameObject.Find("Image");
+        GameObject img = gameObject;
+        string tag = img.tag;
+        GameObject ph = GameObject.Find("PlaceHolder" + tag);
 
-		float distance = Vector3.Distance(ph1.transform.position, img.transform.position);
+		float distance = Vector3.Distance(ph.transform.position, img.transform.position);
 
         if (distance <= 50) {
-            snap(img, ph1);
+            snap(img, ph);
         } else {
             moveBack();
         }
